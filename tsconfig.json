@@ -1,0 +1,9 @@
+{
+  "extends": "eslint-config-wesbos/tsconfig.json",
+  "include": [
+    "./**/*"
+  ],
+  "compilerOptions": {
+    "strict": true
+  }
+}
