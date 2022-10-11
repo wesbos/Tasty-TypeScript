@@ -1,0 +1,142 @@
+html {
+  margin: 0;
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  --yellow:#ffc600;
+  --cloudCover: rgb(233, 232, 224);
+  --georgia-peach: #E9A99A;
+  --grape-gum: #413D6D;
+  --scandinavian-blue: #4E4E8C;
+  background: linear-gradient(to bottom, var(--scandinavian-blue) 0%, var(--grape-gum) 100%);
+  color: var(--cloudCover);
+}
+
+body {
+  min-height: 100vh;
+  margin: 0;
+}
+
+@font-face {
+  font-family: 'Material Symbols Outlined';
+  font-style: normal;
+  font-weight: 300;
+  /* Local version of the font */
+  src: url('./fonts/material-symbols.woff') format('woff');
+}
+
+/*
+  Added benefit of adding a short '.icon` class
+  Who wants to type .material-symbols-outlined?!
+*/
+.material-symbols-outlined, .icon {
+  font-family: 'Material Symbols Outlined';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  display: inline-block;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  -moz-font-feature-settings: 'liga';
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* App Layout */
+.app {
+  display: grid;
+  grid-template-columns: 1fr;
+  max-width: 900px;
+  margin: 0 auto;
+  align-content: center;
+  min-height: 100vh;
+}
+
+.video video {
+  grid-column: 1 / -1;
+  grid-row: 1 / -1;
+}
+
+.video .labels {
+  grid-column: 1 / -1;
+  grid-row: 1 / -1;
+  z-index: 2;
+}
+
+.label {
+  --padding: 5px;
+  --size: 10px;
+  padding: var(--padding) calc(var(--padding) * 1.8);
+  transform: translateY(-50%) translateX(var(--size));
+  color: black;
+  position: absolute;
+  background: #f4f4f4;
+  border: 1px solid var(--yellow);
+  border-radius: 4px;
+  text-transform: uppercase;
+  font-size: 11px;
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
+  font-weight: 900;
+  text-align: center;
+  transition: all 0.1s;
+  box-shadow: 0 0 5px 2px rgba(0,0,0,0.5);
+}
+
+/* Select Any label without an inline style applied to it (yet) and hide it */
+.label:not([style]) {
+  display: none;
+}
+
+.label:before {
+  display: block;
+  content: '';
+  position: absolute;
+  background: var(--yellow);
+  height: var(--size);
+  width: var(--size);
+  left: 0;
+  top: calc(50% - var(--size) / 2);
+  transform: translateX(calc(-50% - 1px)) rotate(45deg);
+}
+
+
+h1 {
+  text-align: center;
+  margin: 0;
+}
+
+.video {
+  position: relative;
+  display: inline-grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr;
+}
+
+video {
+  width: 100%;
+  border-radius: 50px;
+  box-shadow: 0 0 5px 2px rgba(0,0,0,0.2);
+}
+
+.label.hidden {
+  display: none;
+}
+
+.camera-select {
+  width: 100%;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;;
+  color: white;
+  padding: 20px;
+}
+
+.camera-select select {
+  background: none;
+  border:0;
+  font-size: 20px;
+  color: white;
+}

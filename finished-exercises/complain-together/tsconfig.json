@@ -1,0 +1,11 @@
+{
+  "compilerOptions": {
+    "strict": true,
+    "strictNullChecks": true,
+    "noImplicitAny": true,
+    "lib": [
+      "DOM",
+      "ES2022",
+    ]
+  }
+}

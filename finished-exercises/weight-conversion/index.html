@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Convert</title>
+  <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+  <div class="convert">
+    <h1>Convert</h1>
+    <form>
+      <label for="fromValue">
+        <input type="number" name="fromValue" value="200">
+      </label>
+      <label for="fromUnit">
+        <span></span>
+        <select name="fromUnit" id="fromUnit">
+        </select>
+      </label>
+      <label class="fancy" for="fromValue">To</label>
+      <select name="toUnit" id="toUnit">
+      </select>
+      <p class="toValue"></p>
+    </form>
+  </div>
+
+  <script type="module" src="./src/index.ts"></script>
+</body>
+
+</html>

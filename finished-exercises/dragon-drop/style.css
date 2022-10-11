@@ -1,0 +1,63 @@
+html {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  background-image: linear-gradient(160deg, #0093E9 0%, #80D0C7 100%);
+  min-height: 100vh;
+  --blue: hsl(190, 89%, 50%);
+  --bs: 0 4px 10px 0 hsla(100, 69%, 0%, 0.1);
+}
+
+.items {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  max-width: 500px;
+  margin: 100px auto;
+}
+
+
+.items li {
+  cursor: pointer;
+  position: relative;
+  --rotate: 0deg;
+  --scale: 1;
+  transform: scale(var(--scale)) rotate(var(--rotate));
+  transition: all 0.2s;
+  outline: 0;
+}
+
+/* adding margin to the li items causes lots of bugs with drag and drop, its best if they kiss eachother. We can add styles inside the li */
+.items li .dragStyles {
+  padding: 10px;
+  background: white;
+  border-radius: 2px;
+  box-shadow: var(--bs);
+  margin: 10px;
+  border: 2px solid white;
+}
+
+.items li:focus .dragStyles {
+  border-color: #ffc600;
+}
+
+.event {
+  font-size: 10px;
+}
+
+.items li.drag {
+  --scale: 1.1;
+  --rotate: 1deg;
+}
+.items li.drag + li {
+  margin-top: 20px;
+}
+
+body {
+  text-align: center;
+}
+.assistiveText {
+  text-align: center;
+  display: block;
+  margin: 50px auto;
+  font-size: 20px;
+  font-weight: 900;
+}

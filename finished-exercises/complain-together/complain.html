@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Complain Together</title>
+  <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+  <div class="complain">
+    <h1>Complainer 2000: complain globally™</h1>
+    <h3>You think your gas is expensive?!</h3>
+
+    <form name="prices">
+      <label for="price">You Pay</label>
+      <input type="number" name="price" value="2.00" step="0.01">
+      <select name="currency" id="currency">
+      </select>
+      <span>per</span>
+      <select name="unit" id="unit">
+      </select>
+      <br>
+      <span>That is</span>
+      <mark class="displayValue">_</mark> <select name="currencyTo" id="currencyTo"></select><span>per</span> <select
+        name="unitTo" id="unitTo"></select>!
+
+    </form>
+  </div>
+
+
+  <script type="module" src="./complain.ts"></script>
+</body>
+
+</html>

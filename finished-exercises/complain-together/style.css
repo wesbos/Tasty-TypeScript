@@ -1,0 +1,70 @@
+html {
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #000;
+  background-color: #fff;
+  --brad: 3px; /* such a brad thing */
+  --yellow: #ffc600;
+  --pink: #FF68B8;
+  background-image: linear-gradient(160deg, #0093E9 0%, #80D0C7 100%);
+    background-image: linear-gradient(90deg, #00DBDE 0%, #FC00FF 100%);
+  height: 100%;
+  display: grid;
+  align-content: center;
+  justify-items: center;
+}
+
+body {
+  margin: 0;
+  padding: 20px;
+}
+
+form {
+  padding: 20px;
+  border-radius: var(--brad);
+  font-weight: 900;
+}
+
+form :is(select, input, textarea) {
+  padding: 10px;
+  border: 1px solid var(--yellow);
+  border-radius: var(--brad);
+  background: none;
+  box-sizing: border-box;
+  margin-bottom: 10px;
+  font-weight: 900;
+
+}
+
+form :is(select, input, textarea):focus {
+  outline: var(--pink) solid 1px;
+}
+
+.complain {
+  padding: 50px;
+  border-radius: 20px;
+  position: relative;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  overflow: hidden;
+  text-align: center;
+}
+
+.complain:after {
+  display: block;
+  content: '';
+  background: rgba(255,255,255,0.2);
+  background-image: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
+  filter: blur(2px);
+  position: absolute;
+  height:120%;
+  width: 120%;
+  top: -10%;
+  left: -10%;
+  z-index: -1;
+  opacity: 0.3;
+}
+
+h1 {
+  margin: 0;
+}

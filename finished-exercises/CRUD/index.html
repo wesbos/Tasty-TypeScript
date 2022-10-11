@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset = utf-8" />
+  <link rel="icon" href="https://fav.farm/🖼" />
+  <title>CRUD</title>
+  <link href="https://fonts.googleapis.com/css2?family=Monoton&family=Staatliches&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./style.css">
+
+</head>
+
+<body>
+  <main class="app">
+    <h1>CRUD!</h1>
+    <p>Create <span class="yellow">&times;</span> Read <span class="yellow">&times;</span> Update <span
+        class="yellow">&times;</span> Delete</p>
+    <div class="modal modal-add">
+      <form id="add">
+        <h2>Add an Item</h2>
+        <label for="name">
+          Description:
+          <input required type="text" name="description" id="description">
+        </label>
+        <label for="price">
+          Price:
+          <input required type="number" name="price" id="price">
+        </label>
+        <button type="submit">Save</button>
+      </form>
+    </div>
+
+    <div class="modal modal-update">
+      <form id="update">
+        <h2>Update</h2>
+        <fieldset></fieldset>
+        <button type="submit">Update</button>
+      </form>
+    </div>
+
+    <section class="items">
+      <ul></ul>
+      <button class="add">+ Add Item</button>
+    </section>
+
+  </main>
+  <script type="module" src="./app.ts"></script>
+</body>
+
+</html>

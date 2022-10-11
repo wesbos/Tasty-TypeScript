@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Stretch timer</title>
+  <link rel="stylesheet" href="./style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;500;900&display=swap" rel="stylesheet">
+  <link rel="icon" href="https://fav.farm/🧘‍♀️" />
+</head>
+
+<body>
+  <div class="app">
+
+    <div class="timer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 34 34">
+        <circle cx="16" cy="16" r="15.9155" class="timer-background" />
+        <circle cx="16" cy="16" r="15.9155" class="timer-progress" />
+      </svg>
+      <div class="app-controls">
+        <select name="voices" id="voices"></select>
+        <button class="start">Start</button>
+        <button class="pause">Pause</button>
+        <button class="stop">Stop</button>
+      </div>
+
+    </div>
+
+    <div class="editor"></div>
+  </div>
+
+  <script src="./timer.ts" type="module"></script>
+
+</body>
+
+</html>

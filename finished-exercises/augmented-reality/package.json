@@ -1,0 +1,20 @@
+{
+  "name": "augmented-reality",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "vite ."
+  },
+  "keywords": [],
+  "author": "Wes Bos",
+  "license": "ISC",
+  "dependencies": {
+    "@undecaf/barcode-detector-polyfill": "^0.9.9",
+    "vite": "^2.9.9"
+  },
+  "devDependencies": {
+    "@originjs/vite-plugin-commonjs": "^1.0.3",
+    "path-browserify": "^1.0.1"
+  }
+}

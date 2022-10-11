@@ -1,0 +1,14 @@
+{
+  "name": "repetiton-timer",
+  "version": "1.0.0",
+  "description": "",
+  "main": "speech.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Wes Bos",
+  "license": "ISC",
+  "dependencies": {
+    "waait": "^1.0.5"
+  }
+}

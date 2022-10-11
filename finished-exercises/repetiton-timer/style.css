@@ -1,0 +1,175 @@
+html {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  background: linear-gradient(40deg, #00d2ffee 0%, #3a47d5 100%);
+  background-attachment: fixed;
+  font-size: 62.5%;
+  outline-color: #ff3296  ;
+  --yellow: #ffc600;
+  --lightYellow: #f8f0ad;
+  --pink: #ff3296;
+  --black: #303030;
+  --lightGrey: #efefef;
+  color: var(--black);
+  margin: 0;
+  padding: 0;
+}
+body {
+  margin: 0;
+  padding: 0;
+}
+
+h2 {
+  font-size: 2rem;
+  font-weight: 900;
+}
+
+
+.timer {
+  --size: 500px;
+  --strokeWidth: 1.5;
+  --color: var(--yellow);
+  --inactive: var(--lightYellow);
+  --strokeOffset: 0;
+  --transitionLength: 20s;
+}
+svg {
+  width: var(--size);
+  height: var(--size);
+  fill: black;
+}
+
+
+.timer-background {
+  fill: none;
+  stroke: var(--inactive);
+  stroke-width: var(--strokeWidth);
+}
+
+.timer-progress {
+  fill: none;
+  stroke: var(--color);
+  stroke-dasharray: 100 100;
+  stroke-dashoffset: var(--strokeOffset);
+  stroke-linecap: round;
+  stroke-width: var(--strokeWidth);
+  transition: stroke-dashoffset var(--transitionLength) ease-in-out;
+
+}
+
+/* .timer.even {
+  --color: var(--lightYellow);
+  --inactive: var(--yellow);
+} */
+
+
+.timer-progress.on {
+  --strokeOffset: 100;
+}
+
+.stretch-group {
+  border-bottom: 1px solid #efefef;
+  padding-bottom: 1rem;
+  margin-bottom: 1rem;
+  background: rgba(255,255,255,1);
+  --padding: 1rem;
+}
+
+.stretch-group header {
+  border-bottom: 1px solid var(--lightGrey);
+  background:#fcfcfc;
+  padding: var(--padding);
+  display: grid;
+  grid-template-columns: 1fr auto;
+}
+
+.stretch-group section {
+  padding: var(--padding);
+}
+
+.stretch-group label {
+  text-transform: capitalize;
+  text-align: right;
+  font-weight: 500;
+}
+
+.stretch-group h2 {
+  margin: 0;
+}
+
+.stretch-input {
+  display: grid;
+  padding: 2px 0;
+  grid-template-columns: 1fr 2fr;
+  gap: 1rem;
+  align-items: center;
+}
+
+.stretch-group input {
+  padding: 0.5rem;
+  border: 0;
+  border: 1px solid var(--lightGrey);
+}
+.stretch-group input:focus {
+  border-color: var(--pink);
+  outline: 0;
+}
+
+
+
+button {
+  background: hsla(0,100%,0%,0.03);
+  border: 0;
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 0.5rem 1rem;
+}
+
+button:hover {
+  background: var(--pink);
+  color: white;
+}
+
+
+.editor {
+  /* background: white; */
+  /* height: 100%;
+  position: fixed;
+  top: 20px;
+  bottom: 30px;
+  right: 0;
+  overflow: auto; */
+}
+
+/* Layout Only */
+.app {
+  display: grid;
+  width: 100%;
+  grid-template-columns: 1fr 400px;
+  height: 100vh;
+  place-content: center;
+  place-items: center;
+}
+
+.app-controls {
+  grid-column: 1;
+  place-content: center;
+  place-items: center;
+}
+
+.timer {
+  display: grid;
+  place-content: center;
+  place-items: center;
+}
+.timer > * {
+  grid-column: 1;
+  grid-row: 1;
+}
+
+.editor {
+  grid-column: 2;
+  height: 100%;
+  overflow: auto;
+  margin: 0 2rem;
+}

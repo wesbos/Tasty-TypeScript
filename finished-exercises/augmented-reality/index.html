@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Augmented Reality</title>
+  <link rel="stylesheet" href="./style.css">
+  <link rel="icon" href="https://fav.farm/👓" />
+</head>
+
+<body>
+  <div class="app">
+    <h1>Augmented Reality!</h1>
+    <label for="camera" class="camera-select">
+      <span class="icon" aria-label="Change Camera">Videocam</span>
+      <select name="camera" id="camera"></select>
+    </label>
+
+    <div class="video">
+      <div class="labels"></div>
+      <video playsinline muted class="webcam"></video>
+    </div>
+    <script type="module" src="./ar.ts"></script>
+  </div>
+</body>
+
+</html>

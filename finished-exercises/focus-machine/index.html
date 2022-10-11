@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Focus Machine</title>
+  <link rel="stylesheet" href="./css/style.css">
+  <link rel="icon" href="https://fav.farm/😌" />
+</head>
+
+<body>
+  <!-- https://www.pacdv.com/sounds/ambience_sounds.html -->
+
+  <div class="app">
+    <nav>
+      <button class="restoreMix">Restore Mix</button>
+      <button class="setMix" data-mix="[]">Clear Mix</button>
+      <button class="setMix" data-mix='[{"id":"fire-1","volume":1},{"id":"river-2","volume":0.07}]'>Focus</button>
+      <button class="setMix"
+        data-mix='[{"id":"airport-gate-1","volume":1},{"id":"airplane-interior-1","volume":0.72},{"id":"airport-security-1","volume":1},{"id":"bus-1","volume":1},{"id":"caf-1","volume":0.61},{"id":"caf-2","volume":0.27},{"id":"c-p-1","volume":1},{"id":"city-traffic-1","volume":1},{"id":"c-c-1","volume":0.6},{"id":"crowd_outside_2","volume":1},{"id":"crowd_outside_3","volume":1},{"id":"downtown-2","volume":1},{"id":"fire-1","volume":1},{"id":"river-2","volume":0.07}]'>Chaos</button>
+      <textarea name="mix"></textarea>
+    </nav>
+    <div class="sounds"></div>
+
+
+    <div class="bg-tea"></div>
+  </div>
+  <script type="module" src="./index.ts"></script>
+</body>
+
+</html>

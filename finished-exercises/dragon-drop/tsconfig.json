@@ -1,0 +1,10 @@
+{
+  "compilerOptions": {
+    "strict": true,
+    "strictNullChecks": true,
+    "lib": [
+      "DOM",
+      "es2020"
+    ]
+  }
+}
