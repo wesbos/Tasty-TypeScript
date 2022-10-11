@@ -7,3 +7,6 @@ haters/
 *.log
 dist
 dist-ssr
+sounds/
+.parcel-cache/
+hot_dog/
