@@ -2,7 +2,6 @@
   "name": "augmented-reality",
   "version": "1.0.0",
   "description": "",
-  "main": "ar.ts",
   "scripts": {
     "start": "vite ."
   },
