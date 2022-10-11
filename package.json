@@ -3,6 +3,10 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "workspaces": [
+    "finished-exercises/*",
+    "exercises/*"
+  ],
   "scripts": {
     "start": "vite"
   },

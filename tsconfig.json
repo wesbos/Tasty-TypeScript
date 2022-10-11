@@ -4,6 +4,10 @@
     "./**/*"
   ],
   "compilerOptions": {
-    "strict": true
+    "strict": true,
+    "lib": [
+      "ESNext",
+      "DOM"
+    ],
   }
 }

@@ -1,0 +1,14 @@
+{
+  "name": "compound",
+  "version": "1.0.0",
+  "description": "",
+  "main": "compound.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Wes Bos",
+  "license": "ISC",
+  "dependencies": {
+    "financial": "^0.1.3"
+  }
+}
