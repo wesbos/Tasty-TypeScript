@@ -5,18 +5,18 @@ export const codes = {
   },
   2: {
     name: 'Stove',
-    value: 2
+    value: 2,
   },
   3: {
     name: 'Outdoor',
-    value: 3
+    value: 3,
   },
   banana: {
     name: '🍌',
-    value: 'banana'
+    value: 'banana',
   },
   apple: {
     name: '🍎',
-    value: 'apple'
+    value: 'apple',
   },
-}
+};

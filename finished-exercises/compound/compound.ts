@@ -1,5 +1,5 @@
 // Compound Love
-import { fv, PaymentDueTime, pv } from 'financial';
+import { fv, PaymentDueTime } from 'financial';
 
 interface CompoundFormElement extends HTMLFormElement {
   initial: HTMLInputElement;
@@ -30,6 +30,7 @@ const compoundForm = document.querySelector<CompoundFormElement>(
 const resultsEl = document.querySelector<HTMLDivElement>('.results');
 
 function getValues(): CompoundValues {
+  if (!compoundForm) throw new Error('No compound form found');
   return {
     initial: parseFloat(compoundForm.initial.value),
     return: parseFloat(compoundForm.return.value) / 100,
@@ -41,7 +42,7 @@ function getValues(): CompoundValues {
 }
 
 function formatMoney(dollars: number): string {
-  const { format } = new Intl.NumberFormat('en-CA', {
+  const formatter = new Intl.NumberFormat('en-CA', {
     currency: 'CAD',
     style: 'currency',
     // If the number of dollars is evenly divisible by 1
@@ -49,7 +50,7 @@ function formatMoney(dollars: number): string {
     // otherwise show 2 decimal places
     maximumFractionDigits: dollars % 1 ? 2 : 0,
   });
-  return format(dollars);
+  return formatter.format(dollars);
 }
 
 function getYearlyResults(): YearlyResult[] {
@@ -124,11 +125,12 @@ function generateResultsHTML(results: YearlyResult[]): string {
 }
 
 function displayResults(): void {
+  if (!resultsEl) throw new Error('No results element found');
   console.log('Displaying results!');
   resultsEl.innerHTML = generateResultsHTML(getYearlyResults());
 }
 
 // trigger when the form changes
-compoundForm.addEventListener('change', displayResults);
+compoundForm?.addEventListener('change', displayResults);
 // trigger on page load
 displayResults();

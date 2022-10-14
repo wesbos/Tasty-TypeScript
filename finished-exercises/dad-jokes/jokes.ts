@@ -1,4 +1,5 @@
 const jokeButton = document.querySelector<HTMLButtonElement>('.getJoke');
+if (!jokeButton) throw new Error('No joke button found');
 const jokeButtonSpan = jokeButton.querySelector<HTMLSpanElement>('.jokeText');
 const jokeHolder = document.querySelector<HTMLParagraphElement>('.joke p');
 const loader = document.querySelector<HTMLDivElement>('.loader');
@@ -26,19 +27,20 @@ async function fetchJoke(): Promise<Joke> {
       Accept: 'application/json',
     },
   });
-  return await response.json() as Joke;
+  return (await response.json()) as Joke;
 }
 
 async function getJoke(): Promise<Joke> {
   // turn loader on
-  loader.classList.remove('hidden');
-  const JokeResponse =  await fetchJoke();
+  // Here we use ? because if loader is null, it doesnt break the app
+  loader?.classList.remove('hidden');
+  const JokeResponse = await fetchJoke();
   // turn the loader off
-  loader.classList.add('hidden');
+  loader?.classList.add('hidden');
   return JokeResponse;
 }
 
-function randomItemFromArray(arr: string[], not: string) {
+function randomItemFromArray(arr: string[], not: string): string {
   const item = arr[Math.floor(Math.random() * arr.length)];
   if (item === not) {
     console.log('Ahh we used that one last time, look again');
@@ -49,10 +51,11 @@ function randomItemFromArray(arr: string[], not: string) {
 
 async function handleClick() {
   const { joke } = await getJoke();
+  if (!jokeHolder || !jokeButtonSpan) throw new Error('No joke element found');
   jokeHolder.textContent = joke;
   jokeButtonSpan.textContent = randomItemFromArray(
     buttonText,
-    jokeButtonSpan.textContent
+    jokeButtonSpan.textContent || ''
   );
 }
 

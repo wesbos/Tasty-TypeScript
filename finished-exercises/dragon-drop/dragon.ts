@@ -129,10 +129,8 @@ function handleKeyUp(e: KeyboardEvent) {
 }
 
 // EventListener is already built into typescript, but if we wanted to type our own:
-type EventListener2<EventType extends Event> = (e: EventType) => void;
-type DragEventListener = EventListener2<DragEvent>;
+// type EventListener2<EventType extends Event> = (e: EventType) => void;
 
-type AnyFunc = (...args: any[]) => any;
 type Funky<FunkyType> = (e: FunkyType) => void;
 function delegate<EventType extends Event>(
   selector: string,
@@ -161,8 +159,7 @@ function init() {
   // Drag Moves
   itemsEl.addEventListener('drag', delegate('li', handleDrag));
   itemsEl.addEventListener('dragenter', delegate('li', handleDrag));
-  itemsEl.addEventListener('dragexit', delegate('li', handleDrag));
-  // itemsEl.addEventListener('dragleave', delegate('li', handleDrag));
+  itemsEl.addEventListener('dragleave', delegate('li', handleDrag));
   itemsEl.addEventListener('dragover', delegate('li', handleDrag));
   // Drops
   itemsEl.addEventListener('dragend', delegate('li', handleDrop));

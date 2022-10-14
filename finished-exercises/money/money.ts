@@ -1,30 +1,35 @@
-import { Currencies, currencies, CurrencyCode } from "./currencies";
+import { Currencies, currencies, CurrencyCode } from './currencies';
 
-const fromSelect = document.querySelector<HTMLSelectElement>('[name="from_currency"]');
-const fromInput = document.querySelector<HTMLInputElement>('[name="from_amount"]');
-const toSelect = document.querySelector<HTMLSelectElement>('[name="to_currency"]');
+const fromSelect = document.querySelector<HTMLSelectElement>(
+  '[name="from_currency"]'
+);
+const fromInput = document.querySelector<HTMLInputElement>(
+  '[name="from_amount"]'
+);
+const toSelect = document.querySelector<HTMLSelectElement>(
+  '[name="to_currency"]'
+);
 const toEl = document.querySelector<HTMLParagraphElement>('.to_amount');
 const form = document.querySelector<HTMLFormElement>('.app form');
 // These endpoints sometimes change, so if you are getting an error, check github to see if the endpoint has been updated!
 const endpoint = 'https://api.frankfurter.app/latest';
 
 type Rate = {
-  [Property in CurrencyCode]?: number
-}
+  [Property in CurrencyCode]?: number;
+};
 
 type Rates = {
   [Property in CurrencyCode]?: Rate;
-}
+};
 
 // This can't also be a Record because there is no way to make it optional
 // type RateRecord = Record<CurrencyCode, number>;
 // type RatesRecord = Record<CurrencyCode, Rate>;
 
-
 type RateResponse = {
-  base: CurrencyCode,
-  rates: Rate
-}
+  base: CurrencyCode;
+  rates: Rate;
+};
 const ratesByBase: Rates = {};
 
 function generateOptions(options: Currencies): string {
@@ -38,11 +43,15 @@ function generateOptions(options: Currencies): string {
 
 async function fetchRates(base = 'USD'): Promise<RateResponse> {
   const res = await fetch(`${endpoint}?base=${base}`);
-  const ratesResponse = await res.json() as RateResponse;
+  const ratesResponse = (await res.json()) as RateResponse;
   return ratesResponse;
 }
 
-async function convert(amount: number, from: CurrencyCode, to: CurrencyCode): Promise<number> {
+async function convert(
+  amount: number,
+  from: CurrencyCode,
+  to: CurrencyCode
+): Promise<number> {
   // first check if we even have the rates to convert from that currency
   if (!ratesByBase[from]) {
     console.log(

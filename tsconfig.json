@@ -1,5 +1,4 @@
 {
-  "extends": "eslint-config-wesbos/tsconfig.json",
   "include": [
     "./**/*"
   ],
@@ -7,7 +6,8 @@
     "strict": true,
     "lib": [
       "ESNext",
-      "DOM"
+      "DOM",
+      "DOM.Iterable"
     ],
   }
 }

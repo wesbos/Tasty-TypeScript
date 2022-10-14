@@ -18,9 +18,12 @@ const app = document.querySelector<HTMLDivElement>('.app');
 if (!app) throw new Error('No app element found, aborting');
 const videoEl = app.querySelector<HTMLVideoElement>('video.webcam');
 const labelsEl = app.querySelector<HTMLDivElement>('.labels');
+if (!labelsEl) throw new Error('No labels element found, aborting');
+
 const cameraSwitcherEl = document.querySelector<HTMLSelectElement>(
   'select[name="camera"]'
 );
+if (!cameraSwitcherEl) throw new Error('No camera switcher found');
 
 export interface BoundingBox {
   x: number;
@@ -64,13 +67,13 @@ async function populateVideo(cameraId?: string) {
   videoEl.srcObject = stream;
   videoEl.muted = true;
   await videoEl.play();
-  setInterval(detectBarcodes, 100);
+  setInterval(() => detectBarcodes(videoEl), 100);
   populateCameras();
   // setInterval(paintToCanvas, 20);
 }
 
-async function detectBarcodes() {
-  const results: DetectedBarcode[] = await barcodeDetector.detect(videoEl);
+async function detectBarcodes(video: HTMLVideoElement) {
+  const results: DetectedBarcode[] = await barcodeDetector.detect(video);
   results.forEach((result) => {
     // console.log('Detected barcode', result.rawValue);
     // console.table(result.cornerPoints);
@@ -84,11 +87,12 @@ async function detectBarcodes() {
     const scaledCenterPoint = scaleCoordsToVideo(centerPoint.x, centerPoint.y);
 
     // console.table(result.cornerPoints);
-    const [topLeft, topRight, bottomRight, bottomLeft] = result.cornerPoints;
+    // const [topLeft, topRight, bottomRight, bottomLeft] = result.cornerPoints;
     // select the label for this element
-    const label = labelsEl.querySelector<HTMLSpanElement>(
+    const label = labelsEl?.querySelector<HTMLSpanElement>(
       `[data-code="${result.rawValue}"]`
     );
+    if (!label) throw new Error('No label found');
     // label.style.width = `${width}px`;
     // label.style.height = `${height}px`;
     label.style.left = `${scaledCenterPoint.x}px`;
@@ -96,19 +100,19 @@ async function detectBarcodes() {
   });
 }
 
-async function createLabels() {
+function createLabels() {
   Object.values(codes).forEach((code) => {
     const el = document.createElement('span');
     el.classList.add('label');
     el.innerText = code.name;
     el.dataset.code = code.value.toString();
-    labelsEl.appendChild(el);
+    labelsEl?.appendChild(el);
   });
 }
 
 async function populateCameras() {
   // if there is a list of cameras already, don't bother
-  if (cameraSwitcherEl.length) return;
+  if (!cameraSwitcherEl || cameraSwitcherEl.length) return;
   // get all devices
   const devices = await navigator.mediaDevices.enumerateDevices();
   console.table(devices);
@@ -124,10 +128,12 @@ async function populateCameras() {
 }
 
 function handleCameraChange() {
+  if (!cameraSwitcherEl) return;
   populateVideo(cameraSwitcherEl.value);
 }
 
 function scaleCoordsToVideo(x: number, y: number) {
+  if (!videoEl) throw new Error('No video element found');
   const videoRect = videoEl.getBoundingClientRect();
   // videoRect.width / videoEl.videoWidth givies us a multiplier to scale the x and y coords. Say we have 1920 video, but it's being displayed at 500px wide. Then we will have 500 / 1920 = 0.2604166667. A point that used to be at 500, is now 500 * 0.2604166667.
   return {
