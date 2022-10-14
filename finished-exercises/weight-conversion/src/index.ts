@@ -7,14 +7,20 @@ const fromUnit = form.querySelector<HTMLSelectElement>('[name="fromUnit"]');
 const to = form.querySelector<HTMLParagraphElement>('.toValue');
 const toUnit = form.querySelector<HTMLSelectElement>('[name="toUnit"]');
 
-type TriggerableTarget = HTMLInputElement & HTMLSelectElement;
+// type TriggerableTarget = HTMLInputElement & HTMLSelectElement;
+
+interface WeightConversionResult {
+  symbol: string;
+  name: string;
+  value: number;
+}
 
 const formatter = new Intl.NumberFormat(undefined, {
   maximumFractionDigits: 3, // max three decimal places
 });
 
-function generateOptions(weights: Weight[]): string {
-  return weights
+function generateOptions(allWeights: Weight[]): string {
+  return allWeights
     .map(
       (weight) => /* html */ `
       <option value="${weight.symbol}">
@@ -31,10 +37,12 @@ function calculate(
 ): WeightConversionResult {
   const kg = value * fromWeight.toKg;
   console.log(
-    `${from.value} ${fromUnit.value} is ${kg} KG. Going to convert to ${toUnit.value}`
+    `${from?.value || NaN} ${
+      fromUnit?.value || NaN
+    } is ${kg} KG. Going to convert to ${toUnit?.value || NaN}`
   );
   const toValue = kg / toWeight.toKg;
-  console.log(`${toValue} ${toUnit.value}`);
+  // console.log(`${toValue} ${toUnit?.value}`);
   return {
     symbol: toWeight.symbol,
     name: toWeight.name,
@@ -44,14 +52,18 @@ function calculate(
 
 function runChange(): void {
   // First convert to Kg
-  const fromWeight = weights.find((weight) => weight.symbol === fromUnit.value);
-  const toWeight = weights.find((weight) => weight.symbol === toUnit.value);
-  const result = calculate(parseInt(from.value), fromWeight, toWeight);
+  const fromWeight = weights.find(
+    (weight) => weight.symbol === fromUnit?.value
+  );
+  const toWeight = weights.find((weight) => weight.symbol === toUnit?.value);
+  if (!fromWeight || !toWeight || !to) return;
+  const result = calculate(from?.valueAsNumber || 0, fromWeight, toWeight);
   to.textContent = `${formatter.format(result.value)} ${result.symbol}`;
   console.log(result);
 }
 
 function randomize() {
+  if (!from || !fromUnit || !toUnit) return;
   // create a random value
   from.value = `${Math.floor(Math.random() * 3200)}`;
   // get a random from option
@@ -69,6 +81,10 @@ function randomize() {
 }
 
 function init(): void {
+  if (!fromUnit || !toUnit || !form) {
+    console.info('No From or To Unit');
+    return;
+  }
   // populate Options
   const weightOptions = generateOptions(weights);
   fromUnit.innerHTML = weightOptions;

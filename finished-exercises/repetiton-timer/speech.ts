@@ -17,14 +17,16 @@ export function populateVoices() {
 populateVoices();
 
 export async function speak(text: string) {
-  return new Promise((resolve, reject) => {
+  return new Promise((resolve) => {
     speech.text = text;
-    speech.voice = speechSynthesis
+    const voice = speechSynthesis
       .getVoices()
-      .find((voice) => voice.name === voiceSelect.value);
+      .find((singleVoice) => singleVoice.name === voiceSelect?.value);
+
+    if (voice) speech.voice = voice;
     speechSynthesis.speak(speech);
     console.log(speech);
-    speech.addEventListener('mark', () => console.log('MARKD'));
+    speech.addEventListener('mark', () => console.log('MARKED'));
     speech.addEventListener('end', resolve);
   });
 }

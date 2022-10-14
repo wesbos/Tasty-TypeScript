@@ -63,7 +63,8 @@ async function convert(
     ratesByBase[from] = rates;
   }
   // convert that amount that they passed it
-  const rate = ratesByBase[from][to];
+  const rate = ratesByBase[from]?.[to];
+  if (!rate) throw new Error(`No rate for ${from} to ${to}`);
   const convertedAmount = rate * amount;
   console.log(`${amount} ${from} is ${convertedAmount} in ${to}`);
   return convertedAmount;
@@ -77,8 +78,9 @@ function formatCurrency(amount: number, currency: CurrencyCode) {
 }
 
 async function handleInput() {
+  if (!fromInput || !fromSelect || !toSelect || !toEl) return;
   const rawAmount = await convert(
-    parseFloat(fromInput.value),
+    fromInput.valueAsNumber,
     fromSelect.value as CurrencyCode,
     toSelect.value as CurrencyCode
   );
@@ -86,8 +88,9 @@ async function handleInput() {
 }
 
 const optionsHTML = generateOptions(currencies);
-// populate the options elements
-fromSelect.innerHTML = optionsHTML;
-toSelect.innerHTML = optionsHTML;
 
-form.addEventListener('input', handleInput);
+// populate the options elements
+if (fromSelect) fromSelect.innerHTML = optionsHTML;
+if (toSelect) toSelect.innerHTML = optionsHTML;
+
+form?.addEventListener('input', handleInput);

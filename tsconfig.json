@@ -9,5 +9,6 @@
       "DOM",
       "DOM.Iterable"
     ],
+    "skipLibCheck": true
   }
 }
