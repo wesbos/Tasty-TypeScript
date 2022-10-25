@@ -1,0 +1,30 @@
+{
+  // Inlay Hints
+  "editor.inlayHints.enabled": "offUnlessPressed", // Show on Ctrl + Option (mac) / Ctrl + Alt (windows)
+  "editor.inlayHints.fontSize": 12,
+  "editor.inlayHints.padding": true,
+  "typescript.inlayHints.enumMemberValues.enabled": true,
+  "typescript.inlayHints.propertyDeclarationTypes.enabled": true,
+  "typescript.inlayHints.variableTypes.enabled": true,
+  "typescript.inlayHints.functionLikeReturnTypes.enabled": true,
+  // We can use this to turn on "problems" tab for all files
+  // "typescript.tsserver.experimental.enableProjectDiagnostics": true,
+  // Error Lens Settings
+  "errorLens.fontSize": "12",
+  // "errorLens.fontFamily": "Comic Sans MS",
+  "errorLens.onSave": true,
+  "errorLens.enabledDiagnosticLevels": [
+    "error",
+    "warning",
+    "hint"
+  ],
+  "workbench.colorCustomizations": {
+    "errorLens.hintForeground": "#ffc600A1",
+    "errorLens.hintBackground": "#ffc60003",
+    "errorLens.errorBackground": "#ff000005"
+  },
+  "errorLens.exclude": [
+    "never (read|used)",
+    "Unknown word"
+  ],
+}

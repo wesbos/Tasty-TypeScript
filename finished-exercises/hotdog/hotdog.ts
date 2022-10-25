@@ -113,6 +113,7 @@ class Controls {
 }
 
 const controls = new Controls(checkForHotDog, 200);
+
 videoSelect?.addEventListener('change', handleCameraChange);
 videoEl?.addEventListener('loadedmetadata', populatecameras);
 startStopButton?.addEventListener('click', controls.toggle.bind(controls));

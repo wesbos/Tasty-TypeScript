@@ -3,6 +3,8 @@ import { Currencies, currencies, CurrencyCode } from './currencies';
 const fromSelect = document.querySelector<HTMLSelectElement>(
   '[name="from_currency"]'
 );
+fromSelect.innerHTML = generateOptions(currencies);
+
 const fromInput = document.querySelector<HTMLInputElement>(
   '[name="from_amount"]'
 );
