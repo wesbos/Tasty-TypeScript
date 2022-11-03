@@ -10,7 +10,7 @@
   // We can use this to turn on "problems" tab for all files
   // "typescript.tsserver.experimental.enableProjectDiagnostics": true,
   // Error Lens Settings
-  "errorLens.fontSize": "12",
+  "errorLens.fontSize": "17",
   // "errorLens.fontFamily": "Comic Sans MS",
   "errorLens.onSave": true,
   "errorLens.enabledDiagnosticLevels": [

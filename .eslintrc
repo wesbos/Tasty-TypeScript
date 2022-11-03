@@ -1,5 +1,9 @@
 {
   "extends": [
     "wesbos/typescript"
-  ]
+  ],
+  "rules": {
+    "@typescript-eslint/no-inferrable-types": "off",
+    "@typescript-eslint/no-unused-vars": "off"
+  }
 }
