@@ -9,6 +9,8 @@
       "DOM",
       "DOM.Iterable"
     ],
-    "skipLibCheck": true
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "module": "esnext",
   }
 }
