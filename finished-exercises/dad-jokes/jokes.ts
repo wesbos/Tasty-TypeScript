@@ -21,7 +21,7 @@ const buttonText: string[] = [
   'that was the worst one',
 ];
 
-async function fetchJoke(): Promise<Joke> {
+export async function fetchJoke(): Promise<Joke> {
   const response = await fetch('https://icanhazdadjoke.com', {
     headers: {
       Accept: 'application/json',

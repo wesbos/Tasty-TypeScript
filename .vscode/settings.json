@@ -8,7 +8,7 @@
   "typescript.inlayHints.variableTypes.enabled": true,
   "typescript.inlayHints.functionLikeReturnTypes.enabled": true,
   // We can use this to turn on "problems" tab for all files
-  // "typescript.tsserver.experimental.enableProjectDiagnostics": true,
+  "typescript.tsserver.experimental.enableProjectDiagnostics": false,
   // Error Lens Settings
   "errorLens.fontSize": "17",
   // "errorLens.fontFamily": "Comic Sans MS",
