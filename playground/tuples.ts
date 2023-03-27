@@ -51,6 +51,13 @@ type Dog = {
 };
 const [dog, updateDog] = myState<Dog>({ name: 'snickers', age: 9 });
 
-export {};
-// Error / Response Tuples
 // Branded Tuples
+type Lat = number & {};
+type Lng = number & { __kind: 'lng' };
+type LatLng = [Lat, Lng];
+const latLng: LatLng = [42.342, 84.234234 as Lng];
+const [myLat, myLng] = latLng;
+const what = latLng[0];
+const areYou = latLng[1];
+
+export {};
