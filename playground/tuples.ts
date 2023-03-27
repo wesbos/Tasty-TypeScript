@@ -30,3 +30,27 @@ const data: KeyValPair[] = [
 ];
 
 const population = Object.fromEntries(data);
+
+// Destructuring Tuples
+function myState<StateType>(
+  initialValue: StateType
+): [StateType, (newState: StateType) => void] {
+  let state = initialValue;
+  function updateState(updatedValue: StateType) {
+    state = updatedValue;
+  }
+  return [state, updateState];
+}
+
+const [myAge, setAge] = myState<number>(100);
+console.log(myAge);
+const [myName, updateName] = myState<string>('wes');
+type Dog = {
+  name: string;
+  age: number;
+};
+const [dog, updateDog] = myState<Dog>({ name: 'snickers', age: 9 });
+
+export {};
+// Error / Response Tuples
+// Branded Tuples
