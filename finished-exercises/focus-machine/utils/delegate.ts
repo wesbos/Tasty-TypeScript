@@ -1,5 +1,3 @@
-import { handlePlayPause } from '../dom';
-
 /**
  *
  * @param el The Parent Element you want to listen on
@@ -8,7 +6,7 @@ import { handlePlayPause } from '../dom';
  * @param handler The handler to call when the event is fired
  */
 export function delegate(
-  el: Element | null,
+  el: Element,
   selector: string,
   event: string,
   handler: EventListener,
@@ -29,9 +27,3 @@ export function delegate(
     options
   );
 }
-
-// I have <audio> elements that are not in the DOM yet, but I want to listen for play/pause on page load without attaching event listeners to every single <audio> creaed.
-
-// play/pause don't bubble up, but they do ~capture down~. So we listen on a parent element (like )
-document.body.addEventListener('play', handlePlayPause, { capture: true });
-document.body.addEventListener('pause', handlePlayPause, { capture: true });

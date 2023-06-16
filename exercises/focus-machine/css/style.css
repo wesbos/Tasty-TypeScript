@@ -1,0 +1,102 @@
+:root {
+  --blue: #193549;
+  --lightBlue: #1f4662;
+  --yellow: #ffc600;
+  --green: #3ad900;
+  --lightGreen: #a5ff90;
+  --pink: #ff68b8;
+  --darkPink: #e2489a;
+  --purple: #fb94ff;
+  --orange: #ff9d00;
+  --grad: linear-gradient(45deg, #fa8bff 0%, #2bd2ff 52%, #2bff88 90%);
+}
+
+html {
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  background: var(--grad);
+  background-attachment: fixed;
+}
+
+.sounds {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 20px;
+}
+
+.sound {
+  border-radius: 20px;
+  text-align: center;
+  /* background: var(--lightBlue); */
+  background: rgba(255, 255, 255, 0.2);
+  background: linear-gradient(
+    0deg,
+    rgba(255, 255, 255, 0.1) 0%,
+    rgba(255, 255, 255, 0.3) 100%
+  );
+  cursor: url(https://fav.farm/🔇), auto;
+  border: 1.5px solid var(--yellow);
+  box-shadow: inset 0 0 1px 2px rgba(0, 0, 0, 0.1);
+  & h3 {
+    background: var(--pink);
+  }
+  & img {
+    width: 50px;
+    height: 50px;
+    object-fit: contain;
+    /* filter: invert(100%); */
+    margin: 20px auto;
+    display: block;
+  }
+  & audio {
+    display: none;
+  }
+  & input {
+    accent-color: var(--yellow);
+    font-size: 10px;
+  }
+}
+
+.sound.paused {
+  cursor: url(https://fav.farm/🔊), auto;
+  border-color: var(--lightBlue);
+  box-shadow: none;
+  background: rgba(255, 255, 255, 0.05);
+  & button {
+    background: #fff;
+    color: black;
+  }
+  & input {
+    accent-color: var(--blue);
+  }
+  & img {
+    opacity: 0.2;
+  }
+}
+
+button {
+  font-size: 15px;
+  border: 0;
+  background: var(--darkPink);
+  font-weight: 900;
+  color: white;
+  border-radius: 0 0 2px 2px;
+  cursor: pointer;
+}
+
+nav {
+  text-align: center;
+  & textarea {
+    display: block;
+    width: 500px;
+    max-width: 100%;
+    height: 50px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid var(--yellow);
+    margin: 20px auto;
+    padding: 20px;
+    border-radius: 20px;
+    resize: none;
+    font-family: "Operator Mono", "Fira Code", monospace;
+    overflow: hidden;
+  }
+}

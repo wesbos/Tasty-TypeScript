@@ -2,7 +2,7 @@ import { Sound } from './sounds';
 
 /**
  *
- * @returns Audio Block HTML
+ * @returns Audio HTML String Fragment
  */
 export function generateAudioBlock(sound: Sound): string {
   return /* html */ `
