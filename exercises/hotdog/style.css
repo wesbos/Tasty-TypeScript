@@ -1,0 +1,113 @@
+@import url("https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap");
+
+html {
+  --red-weiner: #c11107;
+  --tan-buns: #f59707;
+  --app-width: 1000px;
+  background: url(./images/doggy.svg);
+  font-family: "Luckiest Guy", cursive;
+}
+
+body {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  margin: 0;
+}
+
+.app {
+  text-align: center;
+  margin: 0 auto;
+  display: inline-block;
+  max-width: var(--app-width);
+  position: relative;
+}
+
+.app video {
+  border-radius: 50px;
+  width: 100%;
+}
+
+canvas.still {
+  display: none;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 20px;
+  width: 200px;
+  box-shadow: 0 0 10px 10px rgba(0, 0, 0, 0.6);
+}
+
+.hotdog {
+  border: 10px solid yellow;
+}
+
+.not_hotdog {
+  border: 10px solid red;
+}
+
+.result {
+  border: 1px solid black;
+  margin: 1rem;
+  position: relative;
+  padding: 10px;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.confidence {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: var(--confidence);
+  background: var(--tan-buns);
+  height: 100%;
+  transition: width 0.2s;
+}
+
+.label {
+  z-index: 2;
+  position: relative;
+  color: black;
+  font-weight: 900;
+}
+
+.app svg {
+  fill: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  max-width: var(--app-width);
+}
+
+.app text {
+  fill: black;
+  font-size: 46px;
+  text-shadow: 5px 5px 0 var(--tan-buns), -5px -5px 0 var(--red-weiner);
+}
+
+.controls {
+  position: relative;
+  z-index: 2;
+}
+
+button,
+select {
+  border: 0;
+  padding: 10px;
+  background: var(--tan-buns);
+}
+
+#tsparticles {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+#tsparticles canvas {
+  position: relative !important;
+}
