@@ -8,10 +8,11 @@
   "author": "Wes Bos",
   "license": "ISC",
   "dependencies": {
-    "ml5": "^0.12.2",
-    "tsparticles-engine": "^2.0.6",
-    "tsparticles-preset-confetti": "^2.0.6",
-    "tsparticles-preset-fireworks": "^2.0.6",
-    "vite": "^2.9.9"
+    "@tensorflow-models/coco-ssd": "^2.2.3",
+    "@tensorflow/tfjs": "^4.13.0",
+    "tsparticles-engine": "^2.12.0",
+    "tsparticles-preset-confetti": "^2.12.0",
+    "tsparticles-preset-fireworks": "^2.12.0",
+    "vite": "^5.0.0"
   }
 }

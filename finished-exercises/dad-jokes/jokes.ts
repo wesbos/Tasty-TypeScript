@@ -4,7 +4,7 @@ const jokeButtonSpan = jokeButton.querySelector<HTMLSpanElement>('.jokeText');
 const jokeHolder = document.querySelector<HTMLParagraphElement>('.joke p');
 const loader = document.querySelector<HTMLDivElement>('.loader');
 
-interface Joke {
+interface JokeResponse {
   id: string;
   joke: string;
   status: number;
@@ -21,16 +21,16 @@ const buttonText: string[] = [
   'that was the worst one',
 ];
 
-export async function fetchJoke(): Promise<Joke> {
+export async function fetchJoke(): Promise<JokeResponse> {
   const response = await fetch('https://icanhazdadjoke.com', {
     headers: {
       Accept: 'application/json',
     },
   });
-  return (await response.json()) as Joke;
+  return (await response.json()) as JokeResponse;
 }
 
-async function getJoke(): Promise<Joke> {
+async function getJoke(): Promise<JokeResponse> {
   // turn loader on
   // Here we use ? because if loader is null, it doesnt break the app
   loader?.classList.remove('hidden');
