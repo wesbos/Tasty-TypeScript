@@ -21,4 +21,8 @@ const myProduct: Purchase = {
 
 type ShippingMethod = `${'UPS' | 'FedEx' | 'DHL'} - ${'OVERNIGHT' | 'ECONOMY'}`;
 
+type InvoiceNumber = `INV-${string}`;
+const myInvoice: InvoiceNumber = 'INV-1234';
+const myInvoice2: InvoiceNumber = 'INV-1234';
+
 export {};

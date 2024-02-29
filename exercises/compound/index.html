@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Compound</title>
+    <link rel="stylesheet" href="./style.css" />
+    <script type="module" src="./compound.ts"></script>
+    <link rel="icon" href="https://fav.farm/💰" />
+  </head>
+
+  <body>
+    <form name="compound">
+      <div class="inputs">
+        <div class="inputWrap">
+          <label for="initial">Initial Investment</label>
+          <input
+            type="number"
+            value="100000"
+            name="initial"
+            placeholder="Initial Amount"
+            min="0"
+            step="10"
+          />
+          <p>How much will you start with?</p>
+        </div>
+        <div class="inputWrap">
+          <label for="return">Annual Return %</label>
+          <input
+            type="number"
+            value="4"
+            name="return"
+            placeholder="Annual Return %"
+            step="0.2"
+            min="0"
+            max="100"
+          />
+          <p>What % of return do you expect?</p>
+        </div>
+        <div class="inputWrap">
+          <label for="duration">Duration</label>
+          <input
+            type="number"
+            value="20"
+            name="duration"
+            placeholder="Years duration"
+            min="0"
+            max="100"
+          />
+          <p>How many years will you invest?</p>
+        </div>
+        <div class="inputWrap">
+          <label for="contribution">Contribution</label>
+          <input
+            type="number"
+            value="500"
+            name="contribution"
+            placeholder="Contribution"
+            min="0"
+            step="20"
+          />
+          <p>How much will you contribute each period?</p>
+        </div>
+        <div class="inputWrap">
+          <label for="frequency">Contribution Frequency</label>
+          <select name="frequency" id="frequency">
+            <option value="12" selected>Monthly</option>
+            <option value="4">Quarterly</option>
+            <option value="1">Annually</option>
+            <option value="52">Weekly</option>
+            <option value="365">Daily</option>
+          </select>
+          <p>How often will you contribute?</p>
+        </div>
+      </div>
+    </form>
+
+    <div class="results"></div>
+  </body>
+</html>

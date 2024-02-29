@@ -60,7 +60,7 @@ canvas.still {
   position: absolute;
   top: 0;
   left: 0;
-  width: calc(var(--confidence) * 1%);
+  width: var(--confidence);
   background: var(--tan-buns);
   height: 100%;
   transition: width 0.2s;

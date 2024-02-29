@@ -1,3 +1,10 @@
+// Recording Tips:
+// 1. Start by showing the element accessing Ids.
+// 2. Setup an on change event listner for the form
+// 3. get Values
+// 4. Get Yearly Results
+// 4. Generate Results HTML
+
 // Compound Love
 import { fv, PaymentDueTime } from 'financial';
 
@@ -71,8 +78,6 @@ function getYearlyResults(): YearlyResult[] {
   });
 }
 
-const html = String.raw;
-
 function generateSingleYearHTML(
   result: YearlyResult,
   prevResult: YearlyResult,
@@ -80,7 +85,7 @@ function generateSingleYearHTML(
 ) {
   const cWidth = (result.contribution / result.currentValue) * 100;
   const pWidth = (result.profit / result.currentValue) * 100;
-  return html`
+  return /* html */ `
     <div class="year">
       <p class="yearSummary">
         <span class="yearNumber">Year ${result.year}</span>
@@ -88,8 +93,9 @@ function generateSingleYearHTML(
       </p>
       <div
         class="result"
-        style="width: ${(result.currentValue / finalResult.currentValue) *
-        100}%; grid-template-columns: ${cWidth}% ${pWidth}%"
+        style="width: ${
+          (result.currentValue / finalResult.currentValue) * 100
+        }%; grid-template-columns: ${cWidth}% ${pWidth}%"
       >
         <span class="contribution"> ${formatMoney(result.contribution)} </span>
         <span class="profit"> ${formatMoney(result.profit)} </span>
@@ -107,7 +113,7 @@ function generateSingleYearHTML(
 
 function generateResultsHTML(results: YearlyResult[]): string {
   const finalResult = results[results.length - 1];
-  return html`
+  return /* html */ `
     <div>
       <h2>
         You'll have ${formatMoney(finalResult.currentValue)} in
