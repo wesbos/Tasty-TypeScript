@@ -1,11 +1,3 @@
-// Recording Tips:
-// 1. Start by showing the element accessing Ids.
-// 2. Setup an on change event listner for the form
-// 3. get Values
-// 4. Get Yearly Results
-// 4. Generate Results HTML
-
-// Compound Love
 import { fv, PaymentDueTime } from 'financial';
 
 interface CompoundFormElement extends HTMLFormElement {
@@ -48,22 +40,22 @@ function getValues(): CompoundValues {
   };
 }
 
-function formatMoney(dollars: number): string {
+function formatMoney(value: number): string {
   const formatter = new Intl.NumberFormat('en-CA', {
     currency: 'CAD',
     style: 'currency',
     // If the number of dollars is evenly divisible by 1
     // don't show any cents
     // otherwise show 2 decimal places
-    maximumFractionDigits: dollars % 1 ? 2 : 0,
+    maximumFractionDigits: value % 1 ? 2 : 0,
   });
-  return formatter.format(dollars);
+  return formatter.format(value);
 }
 
 function getYearlyResults(): YearlyResult[] {
   const values = getValues();
   const yearsArray = Array.from({ length: values.duration }, (_, i) => i + 1);
-  return yearsArray.map((year) => {
+  return yearsArray.map((year): YearlyResult => {
     const currentValue = fv(
       values.return / values.frequency,
       values.frequency * year,
