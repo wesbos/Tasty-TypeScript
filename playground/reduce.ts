@@ -119,71 +119,9 @@ const dummyData: CourseOrder[] = [
 ];
 
 // 1. Tally the total money made
-const starterValue = 0;
-const total = dummyData.reduce(
-  (acc, value) => acc + value.amount,
-  starterValue
-);
 // 2. Tally how many of each course sold
-const coursesSold = dummyData.reduce((acc, value) => {
-  const key = value.course;
-  acc[key] = acc[key] + 1 || 1;
-  // if (acc[key]) {
-  //   acc[key] += 1;
-  // } else {
-  //   acc[key] = 1;
-  // }
-  return acc;
-}, {} as Record<Course, number>);
-console.log(coursesSold);
-
-// {
-//   RFB: 10,
-//   GRID: 5
-// }
-
 // 3. Tally amount made on each course
-type CourseSales = Partial<Record<Course, number>>;
-const courseSales: CourseSales = {};
-
-const totalMade = dummyData.reduce((acc, value) => {
-  const key = value.course;
-  acc[key] = acc[key] ? Number(acc[key]) + value.amount : value.amount;
-  return acc;
-}, {} as CourseSales);
-
-console.log(totalMade);
 // 4. Group the courses sold by country
-const starterValueMap = new Map<CountryCode, CourseOrder[]>();
-const coursesSoldByCountry = dummyData.reduce((acc, value) => {
-  const existingCountryArray = acc.get(value.country);
-  if (existingCountryArray) {
-    existingCountryArray.push(value);
-  } else {
-    acc.set(value.country, [value]);
-  }
-  return acc;
-}, starterValueMap);
-console.log(coursesSoldByCountry);
-
 // 5. Create a map of each country and the amount of students and $$ spent
-type CourseTallyStat = {
-  students: number;
-  amountSpent: number;
-};
-const starterValueMap2 = new Map<CountryCode, CourseTallyStat>();
-const courseStats = dummyData.reduce((acc, value) => {
-  // 1. Check if this country exists in the map
-  // 2. Increment the students adn amountSpend by however much!
-  const existingCountry = acc.get(value.country);
-  const valueForCurrent: CourseTallyStat = {
-    students: 1,
-    amountSpent: value.amount,
-  };
-  if (existingCountry) {
-    valueForCurrent.students += existingCountry.students;
-    valueForCurrent.amountSpent += existingCountry.amountSpent;
-  }
-  return acc;
-}, starterValueMap2);
-console.log(courseStats);
+
+console.log('hi');
