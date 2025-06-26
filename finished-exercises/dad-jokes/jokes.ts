@@ -1,14 +1,14 @@
 const jokeButton = document.querySelector<HTMLButtonElement>('.getJoke');
-if (!jokeButton) throw new Error('No joke button found');
+if (!jokeButton) throw new Error('No Joke button found!');
 const jokeButtonSpan = jokeButton.querySelector<HTMLSpanElement>('.jokeText');
 const jokeHolder = document.querySelector<HTMLParagraphElement>('.joke p');
 const loader = document.querySelector<HTMLDivElement>('.loader');
 
-interface JokeResponse {
+type JokeResponse = {
   id: string;
   joke: string;
   status: number;
-}
+};
 
 const buttonText: string[] = [
   'Ugh.',
@@ -21,42 +21,58 @@ const buttonText: string[] = [
   'that was the worst one',
 ];
 
-export async function fetchJoke(): Promise<JokeResponse> {
-  const response = await fetch('https://icanhazdadjoke.com', {
-    headers: {
-      Accept: 'application/json',
-    },
-  });
-  return (await response.json()) as JokeResponse;
-}
-
-async function getJoke(): Promise<JokeResponse> {
-  // turn loader on
-  // Here we use ? because if loader is null, it doesnt break the app
-  loader?.classList.remove('hidden');
-  const JokeResponse = await fetchJoke();
-  // turn the loader off
-  loader?.classList.add('hidden');
-  return JokeResponse;
-}
-
-function randomItemFromArray(arr: string[], not: string): string {
-  const item = arr[Math.floor(Math.random() * arr.length)];
-  if (item === not) {
-    console.log('Ahh we used that one last time, look again');
+function randomItemFromArray<Item>(arr: Item[], not: Item): Item {
+  const item = arr.at(Math.random() * arr.length);
+  if (item === not || !item) {
+    console.log('😢 We used that one last time! Do it again');
     return randomItemFromArray(arr, not);
   }
   return item;
 }
 
-async function handleClick() {
-  const { joke } = await getJoke();
-  if (!jokeHolder || !jokeButtonSpan) throw new Error('No joke element found');
+async function collect<T>(
+  promise: Promise<T>
+): Promise<[error: null, data: T] | [error: Error, data: null]> {
+  try {
+    const data = await promise;
+    return [null, data]; // [null, User]
+  } catch (err) {
+    return [err as Error, null]; // [Error, null]
+  }
+}
+
+// TODO: Handle error state
+async function fetchJoke(): Promise<JokeResponse> {
+  const response = (await fetch('https://icanhazdadjoke.com', {
+    headers: {
+      Accept: 'application/json',
+    },
+  }).then((res) => res.json())) as JokeResponse;
+
+  return response;
+}
+
+export async function handleClick() {
+  if (!jokeHolder || !jokeButtonSpan) {
+    throw new Error('No joke! The element is not found!');
+  }
+  loader?.classList.remove('hidden');
+  const [jokeFetchError, jokeResponse] = await collect(fetchJoke());
+  let joke;
+  if (jokeFetchError) {
+    console.log('OH NO!!!!');
+    joke =
+      'Sorry, there was an error fetching the joke. Maybe you arent that funny';
+  } else {
+    joke = jokeResponse.joke;
+  }
+
   jokeHolder.textContent = joke;
   jokeButtonSpan.textContent = randomItemFromArray(
     buttonText,
-    jokeButtonSpan.textContent || ''
+    jokeButtonSpan.textContent
   );
+  loader?.classList.add('hidden');
 }
 
 jokeButton.addEventListener('click', handleClick);
