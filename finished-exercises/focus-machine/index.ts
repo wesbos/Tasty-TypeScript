@@ -4,9 +4,9 @@ import {
   handleVolumeChange,
   togglePlay,
   updateVolumeSlider,
-} from './dom';
+} from './utils/dom';
 import { Mix, sounds, SingleMix } from './sounds';
-import { delegate } from './utils/delegate';
+import { delegate } from './delegate';
 
 const app = document.querySelector<HTMLDivElement>('.app');
 if (!app) throw new Error('No app element found');
