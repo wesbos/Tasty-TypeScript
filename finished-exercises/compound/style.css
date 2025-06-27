@@ -1,25 +1,27 @@
-
 html {
   font-size: 62.5%;
   --yellow: #ffc600;
-  --blue: hsla(205, 49%, 19%, 1.00);
-  --lightBlue: hsla(205, 52%, 25%, 1.00);
-  --darkBlue  : rgba(21, 35, 45, 1.00);
-  --pink: hsla(328, 100%, 70%, 1.00);
-  --green: hsla(109, 100%, 50%, 1.00);
+  --blue: hsla(205, 49%, 19%, 1);
+  --lightBlue: hsla(205, 52%, 25%, 1);
+  --darkBlue: rgba(21, 35, 45, 1);
+  --pink: hsla(328, 100%, 70%, 1);
+  --green: hsla(109, 100%, 50%, 1);
   background: var(--blue);
   color: white;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   box-sizing: border-box;
 }
 
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: inherit;
 }
 
 :is(input, select, textarea) {
   background: var(--darkBlue);
-  border: 1px solid rgba(0,0,0,0.1);
+  border: 1px solid rgba(0, 0, 0, 0.1);
   color: white;
   padding: 1rem;
   -moz-appearance: textfield;
@@ -31,7 +33,6 @@ html {
   border-color: var(--yellow);
   outline: 0;
 }
-
 
 .inputs {
   display: grid;
@@ -45,12 +46,11 @@ html {
   display: grid;
   grid-auto-flow: row;
   gap: 1rem 0;
-}
-
-.inputWrap label {
-  font-size: 2rem;
-  display: block;
-  color: var(--yellow);
+  label {
+    font-size: 2rem;
+    display: block;
+    color: var(--yellow);
+  }
 }
 
 .inputWrap p {
@@ -58,10 +58,18 @@ html {
   margin: 0;
 }
 
-.yellow { color: var(--yellow); }
-.blue { color: var(--blue); }
-.pink { color: var(--pink); }
-.green { color: var(--green); }
+.yellow {
+  color: var(--yellow);
+}
+.blue {
+  color: var(--blue);
+}
+.pink {
+  color: var(--pink);
+}
+.green {
+  color: var(--green);
+}
 
 body {
   font-size: 2rem;
@@ -94,7 +102,9 @@ body {
 .yearSummary {
   text-align: right;
 }
-.yearSummary > * { display: block; }
+.yearSummary > * {
+  display: block;
+}
 
 .yearNumber {
   color: var(--yellow);
@@ -104,7 +114,7 @@ body {
   display: inline-block;
   padding: 5px 15px;
   font-weight: 500;
-  color: rgba(0,0,0,0.8);
+  color: rgba(0, 0, 0, 0.8);
   display: grid;
   align-items: center;
 }
