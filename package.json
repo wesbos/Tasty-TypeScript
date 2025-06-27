@@ -8,6 +8,9 @@
   ],
   "scripts": {
     "start": "vite",
+    "dev": "vite",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint .",
     "lint:fix": "eslint --fix ."
   },
   "author": "Wes Bos",
