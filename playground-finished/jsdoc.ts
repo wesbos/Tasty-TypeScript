@@ -9,7 +9,7 @@ class Product {
   }
 
   /**
-   * @deprecated This will be removed in the next version.
+   * @deprecated
    */
   printLabel() {
     console.log(`Printing label for ${this.type} ${this.sku}`);
@@ -22,8 +22,8 @@ chair.printLabel();
 // A Function
 
 /**
- * An example chair used for testing
  * @deprecated This will be removed in the next version. Create a {@link Product} instead.
+ * @description An example chair for testing
  */
 const chair1 = { type: 'chair', sku: 'CHAIR123', warehouseId: 'WH123' };
 
@@ -45,7 +45,7 @@ class ProductNotFound extends Error {
  * @param category - The product category.
  * @param sort - The sort order. `ASC` most recent firstm `DESC` most recent last.
  * @fires {@link Product} When the product is created.
- * @throws {ProductNotFound} - if the product is not found.
+ * @throws {@link ProductNotFound} - if the product is not found.
  * @example ```ts
  * const products = getPromoProducts('123');
  * ```
@@ -56,7 +56,6 @@ try {
   getPromoProducts('123');
 } catch (e) {
   const error = e as ProductNotFound;
-  error.productId
 }
 
 export { Product, ProductNotFound, getPromoProducts };
