@@ -57,7 +57,7 @@ async function getShow(showNumber: number): Promise<Episode> {
 
 async function fetchData<DataType>(
   resource: RequestInfo | URL,
-  options?: RequestInit
+  options?: RequestInit,
 ): Promise<DataType> {
   const response = await fetch(resource, options);
   const data = (await response.json()) as DataType;

@@ -2,6 +2,7 @@
   "name": "starter-files",
   "version": "1.0.0",
   "description": "",
+  "type": "module",
   "workspaces": [
     "finished-exercises/*",
     "exercises/*"
